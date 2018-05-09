@@ -1,4 +1,4 @@
-package xyd.demo
+package xyd.demo.chapter1
 
 /**
  *

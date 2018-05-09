@@ -18,7 +18,10 @@ fun main(args: Array<String>) {
         println("${list.size} 在1..9之间")
     }
 
-    if(list.size in 1..8 step 3){
+    if(list.size in 1..8 step 2){
         println("${list.size} 在1..8之间的第二个么")
+        val oneMillion = 1_0000_0000
+        println(oneMillion)
+
     }
 }
