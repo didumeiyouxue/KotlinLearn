@@ -48,20 +48,74 @@ fun doc(): Unit {
     // 顾名思义
 
     // 4.7 中缀函数
+    /**
+     * 一个函数是成员函数，或者扩展函数，并且只有一个参数，并且使用 infix 修饰。
+     * 在进行函数调用的时候，可以直接使用中缀方式调用
+     */
+
+    // 4.8 尾递归函数优化  trailrec fun 函数(){}
+    /**
+     * 普通的递归函数，是栈堆积操作。 数量大了会发生内存溢出。
+     * 我们写的时候，应该改写成尾递归函数。python、scala、kotlin都支持尾递归优化。
+     * 关键字 trailrec
+     * 如下 add1() 是普通递归
+     *      add2() 是尾递归
+     *
+     *  通过查看字节码，发现是把递归转换成了 while 循环，所以不会发生内存溢出
+     */
 
 }
 
 fun main(args: Array<String>) {
 
-    println(reformat(unFormat = "1987.01.03 - 15-12-23"))
+    // 中缀函数
+    /*
+        val a = A();
+        a printinfo1 "print inner methed"
+        a printinfo2 "print out methed"
+    */
+
+    // 递归 当x 取值太大时候，会发生内存溢出  java.lang.StackOverflowError
+    //println(add1(10_0000))
+
+    // 尾递归
+    println(add2(10_0000, 0))
+
+
+}
+
+
+var total = 0
+
+tailrec fun add2(num: Int, total: Int): Int {
+    return if (num == 1) {
+        1 + total
+    } else {
+        add2(num - 1, num + total)
+    }
+}
+
+fun add1(x: Int): Int {
+    return if (x == 1) {
+        1 + total
+    } else {
+        add1(x - 1)
+    }
 }
 
 fun reformat(unFormat: String = "1970-01-01 00-00-00", temp: String = "YYYY-MM-DD hh-mm-ss"): String {
 
-
     val simpleDateFormat = SimpleDateFormat(temp)
     return simpleDateFormat.format(Date(unFormat))
 
+}
 
+class A {
+    infix fun printinfo1(x: String): Unit {
+        println(x)
+    }
+}
 
+infix fun A.printinfo2(x: Any): Unit {
+    println(x)
 }
