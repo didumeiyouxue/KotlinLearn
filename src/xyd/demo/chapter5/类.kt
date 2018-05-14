@@ -46,12 +46,31 @@ package xyd.demo.chapter5
  *      }
  *
  *
+ *      印章类基本定义：
+ *      sealed calss 类名A {
+ *          calss 类名 a
+ *          class 类名 b
+ *      }
+ *      注意： 印章类不可以直接实例化。
  *
+ *      印章类分支操作： (这里是继承的操作)
+ *      sealed calss Operation {
+ *          calss Add : Operation()
+ *          class Multiply: Operation()
+ *      }
+ *      印章类携带自定义属性： (这里是继承的操作)
+ *      sealed calss Operation {
+ *          calss Add(val num1:Int, val num2 :Int) : Operation()
+ *          class Multiply(val num1:Int, val num2 :Int): Operation()
+ *      }
+ *      注意： 印章类和枚举类都可以完成分支操作，和自定义属性。但是枚举常量的自定义属性是固定不变的。
+ *      而印章类包含的类携带的属性是可以交给外界灵活赋值的。
  *
+ *      枚举和印章结合when使用，会是结构更加清晰。
  *
- *
- *
- *
+ * 5.10 类的继承
+ * 5.11 抽象类
+ * 5.12 接口，接口和抽象类的异同
  * <p/>
  * 修订历史:
  * ----------------------------------
@@ -73,9 +92,11 @@ class Person {
 }
 
 fun main(args: Array<String>) {
-    var person = Person()
+    val person = Person()
 
     println("他的年龄是${person.age}")
     person.age = 58
     println("他的年龄是${person.age}")
+
+
 }
