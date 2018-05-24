@@ -15,13 +15,13 @@ package xyd.demo.chapter7
  *      CharRange()
  *
  *
- *      生成方式2：rangeTo
+ *      生成方式2：rangeTo       []
  *      val range1 = start.rangeTo(end)
  *
- *      生成方式3：..
+ *      生成方式3：..            []
  *      val range3 = 1..9
  *
- *      生成方式4： 中缀函数 until
+ *      生成方式4： 中缀函数 until    [)
  *      val range4 = 1 until 10
  *
  * 7.2 集合 Collectios 概述
@@ -60,6 +60,19 @@ package xyd.demo.chapter7
  * 7.4 set
  *
  *
+ * 7.5 map
+ *
+ *
+ * 7.6 区间、数组、list、set之间可以互相转换
+ *
+ *  (1)区间转数组、list、set
+ *      arrayOf(IntRange)\ toList()\ toSet()
+ *  (2) 数组转list、set
+ *      toList 、 toSet
+ *  (3) list 转 数组、set
+ *      toIntArray 、 toTypedArray 、toSet
+ *  (4) set 转array 、 list
+ *      toIntArray 、 toTypedArray 、 toList
  *
  * <p/>
  * 修订历史:
@@ -71,9 +84,22 @@ val range4: IntRange = 1 until 10
 fun main(args: Array<String>) {
     //doListTest()
 
-    val set = setOf("a", "b", "c", "a")
-    println(set)
+    //val set = setOf("a", "b", "c", "a")
+    //println(set)
 
+    var intRange = 1..10
+    val arrayOf = arrayOf(intRange)
+    val toList = intRange.toList()
+    val toSet = intRange.toSet()
+    println(intRange)
+    println(arrayOf)
+    println(toList)
+    println(toSet)
+
+
+    val map = mapOf<String, Int>(Pair("张三", 10), Pair("李四", 15), Pair("王五", 16))
+    val maptoList1 = map.toList()
+    println(maptoList1)
 }
 
 private fun doListTest() {
